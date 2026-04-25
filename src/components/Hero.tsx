@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { AnimatePresence, motion, Variants } from 'framer-motion';
+import { AnimatePresence, motion, type Variants } from 'framer-motion';
 import { MagneticButton } from './MagneticButton';
 import { FloatingUI } from './FloatingUI';
 import { Typewriter } from './Typewriter';
