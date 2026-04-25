@@ -117,7 +117,7 @@ const Contact = () => {
                 <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
                 <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
               </div>
-              <span className="text-[#d7c2bd] opacity-50">contact_me.sh — artisan-shell</span>
+              <span className="text-[#d7c2bd] opacity-50">contact_me.sh</span>
             </div>
             <form onSubmit={handleSubmit} className="p-md space-y-md">
               <div className="flex gap-md">
