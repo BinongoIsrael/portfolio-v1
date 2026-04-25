@@ -2,9 +2,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-surface-container-low dark:bg-stone-950 text-stone-600 dark:text-stone-400 font-['Space_Grotesk'] text-sm uppercase tracking-wider rounded-none w-full border-t border-outline-variant dark:border-stone-800 shadow-none">
-      <div className="flex flex-col md:flex-row justify-between items-center px-6 md:px-12 py-12 gap-8 w-full max-w-screen-2xl mx-auto">
-        <div className="text-lg font-black text-stone-950 dark:text-stone-50 order-1">
+    <footer className="bg-surface-container-low text-on-surface-variant font-['Space_Grotesk'] text-sm uppercase tracking-wider rounded-none w-full border-t border-outline-variant shadow-none">
+      <div className="flex flex-col md:flex-row justify-between items-center px-margin py-md max-w-screen-2xl mx-auto gap-gutter">
+        <div className="text-lg font-black text-on-surface order-1">
           ISRAEL BINONGO
         </div>
 

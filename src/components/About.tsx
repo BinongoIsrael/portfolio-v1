@@ -20,7 +20,7 @@ const About = () => {
           </div>
         </div>
         <div className="order-1 lg:order-2">
-          <div className="aspect-square bg-surface-container-low border border-outline-variant overflow-hidden relative">
+          <div className="aspect-square bg-surface-container-low border border-outline-variant overflow-hidden relative shadow-xl rounded-none">
             <img 
               alt="Israel Binongo's Photo" 
               className="w-full h-full object-cover" 
