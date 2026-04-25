@@ -1,4 +1,7 @@
+import AnimatedBackground from './components/AnimatedBackground';
+import CursorFollower from './components/CursorFollower';
 import Navbar from './components/Navbar';
+import CommandPalette from './components/CommandPalette';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -10,7 +13,10 @@ import AnimatedSection from './components/AnimatedSection';
 
 function App() {
   return (
-    <>
+    <div className="relative min-h-screen selection:bg-primary/10">
+      <CommandPalette />
+      <CursorFollower />
+      <AnimatedBackground />
       <Navbar />
       <main>
         <AnimatedSection>
@@ -33,7 +39,7 @@ function App() {
         </AnimatedSection>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 
