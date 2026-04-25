@@ -1,5 +1,4 @@
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import React from 'react';
 
 export const FloatingUI = () => {
   const { scrollY } = useScroll();

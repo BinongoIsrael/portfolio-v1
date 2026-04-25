@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { MagneticButton } from './MagneticButton';
 import { FloatingUI } from './FloatingUI';
 import { Typewriter } from './Typewriter';
@@ -39,7 +39,7 @@ const RotatingWords = () => {
 };
 
 const Hero = () => {
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -50,7 +50,7 @@ const Hero = () => {
     }
   };
 
-  const item = {
+  const item: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: { 
       opacity: 1, 
