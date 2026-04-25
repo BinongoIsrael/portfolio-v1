@@ -39,23 +39,31 @@ const RotatingWords = () => {
 };
 
 const Hero = () => {
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  useEffect(() => {
+    // Small delay to allow browser to settle after hydration
+    const timer = setTimeout(() => setShouldAnimate(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
+        staggerChildren: 0.1,
+        delayChildren: 0.1
       }
     }
   };
 
   const item: Variants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 15 },
     show: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
@@ -63,7 +71,7 @@ const Hero = () => {
     <motion.section 
       variants={container}
       initial="hidden"
-      animate="show"
+      animate={shouldAnimate ? "show" : "hidden"}
       className="min-h-[calc(100vh-88px)] flex flex-col items-center justify-center text-center px-margin py-xl relative overflow-hidden" 
       id="hero"
     >
@@ -85,7 +93,10 @@ const Hero = () => {
       <motion.div variants={item} className="w-24 h-px bg-outline-variant mb-md" />
 
       <motion.p variants={item} className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-lg min-h-[3em]">
-        <Typewriter text="I build fast, scalable web apps with clean design and real-world impact." />
+        <Typewriter 
+          text="I build fast, scalable web apps with clean design and real-world impact." 
+          delay={0.8}
+        />
       </motion.p>
 
       <motion.div variants={item} className="flex flex-wrap gap-md justify-center">

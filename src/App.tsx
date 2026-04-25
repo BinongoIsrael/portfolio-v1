@@ -19,9 +19,7 @@ function App() {
       <AnimatedBackground />
       <Navbar />
       <main>
-        <AnimatedSection>
-          <Hero />
-        </AnimatedSection>
+        <Hero />
         <AnimatedSection>
           <About />
         </AnimatedSection>

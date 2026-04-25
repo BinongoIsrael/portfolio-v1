@@ -1,7 +1,7 @@
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect } from "react";
 
-export const Typewriter = ({ text }: { text: string }) => {
+export const Typewriter = ({ text, delay = 0 }: { text: string; delay?: number }) => {
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
   const displayText = useTransform(rounded, (latest) => text.slice(0, latest));
@@ -10,10 +10,11 @@ export const Typewriter = ({ text }: { text: string }) => {
     const controls = animate(count, text.length, {
       type: "tween",
       duration: 2,
+      delay: delay,
       ease: "easeInOut",
     });
     return controls.stop;
-  }, [text, count]);
+  }, [text, count, delay]);
 
   return (
     <span className="inline-flex items-center">
