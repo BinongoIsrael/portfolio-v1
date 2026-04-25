@@ -49,8 +49,40 @@ const Navbar = () => {
     { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId || 'hero');
+    if (element) {
+      const navbarHeight = 88;
+      const viewportHeight = window.innerHeight;
+      const elementHeight = element.offsetHeight;
+      const elementRect = element.getBoundingClientRect().top;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+
+      let finalPosition;
+
+      // Special case: Skills and Projects always scroll to top for clarity
+      if (targetId === 'skills' || targetId === 'projects') {
+        finalPosition = elementPosition - navbarHeight;
+      } else {
+        // Calculate position to center the section for others
+        const centeredPosition = elementPosition - (viewportHeight / 2) + (elementHeight / 2);
+        const minPosition = elementPosition - navbarHeight;
+        finalPosition = Math.max(centeredPosition, minPosition);
+      }
+
+      window.scrollTo({
+        top: finalPosition,
+        behavior: 'smooth'
+      });
+    }
+    if (isMenuOpen) setIsMenuOpen(false);
+  };
+
   return (
-    <nav className="bg-surface dark:bg-stone-950 text-stone-950 dark:text-stone-50 font-['Space_Grotesk'] tracking-tight rounded-none sticky top-0 w-full z-50 border-b border-outline-variant dark:border-stone-800 shadow-none">
+    <nav className="bg-surface text-on-surface font-['Space_Grotesk'] tracking-tight rounded-none sticky top-0 w-full z-50 border-b border-outline-variant shadow-none">
       <div className="flex justify-between items-center px-6 md:px-12 py-6 max-w-screen-2xl mx-auto">
         <div className="flex items-center gap-4">
           <span className="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
@@ -63,10 +95,11 @@ const Navbar = () => {
             <a
               key={link.id}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className={`font-medium transition-colors duration-200 ${
                 activeSection === link.id
                   ? 'text-primary border-b border-primary'
-                  : 'text-stone-600 dark:text-stone-400 hover:text-stone-950 dark:hover:text-stone-50'
+                  : 'text-on-surface-variant hover:text-on-surface'
               }`}
             >
               {link.name}
@@ -77,7 +110,7 @@ const Navbar = () => {
         <div className="flex items-center gap-4 md:gap-6">
           <button 
             onClick={toggleTheme}
-            className="material-symbols-outlined text-stone-600 dark:text-stone-400 hover:text-stone-950 dark:hover:text-stone-50 transition-colors cursor-pointer" 
+            className="material-symbols-outlined text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" 
             data-icon={theme === 'dark' ? 'light_mode' : 'dark_mode'}>
             {theme === 'dark' ? 'light_mode' : 'dark_mode'}
           </button>
@@ -122,12 +155,12 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-[320px] bg-surface dark:bg-stone-950 z-[100] flex flex-col md:hidden shadow-2xl border-l border-outline-variant dark:border-stone-800"
+              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-[320px] bg-surface z-[100] flex flex-col md:hidden shadow-2xl border-l border-outline-variant"
             >
               <div className="flex justify-end items-center px-6 py-6">
                 <button 
                   onClick={() => setIsMenuOpen(false)} 
-                  className="material-symbols-outlined text-3xl cursor-pointer p-2"
+                  className="material-symbols-outlined text-3xl cursor-pointer p-2 text-on-surface"
                   data-icon="close"
                 >
                   close
@@ -139,9 +172,9 @@ const Navbar = () => {
                   <a 
                     key={link.id} 
                     href={link.href} 
-                    onClick={() => setIsMenuOpen(false)} 
+                    onClick={(e) => handleNavClick(e, link.href)} 
                     className={`text-2xl font-bold uppercase tracking-widest transition-colors ${
-                      activeSection === link.id ? 'text-primary' : 'text-stone-600 dark:text-stone-400 hover:text-stone-950 dark:hover:text-stone-50'
+                      activeSection === link.id ? 'text-primary' : 'text-on-surface-variant hover:text-on-surface'
                     }`}
                   >
                     {link.name}
@@ -149,7 +182,7 @@ const Navbar = () => {
                 ))}
               </div>
 
-              <div className="p-8 border-t border-outline-variant dark:border-stone-800">
+              <div className="p-8 border-t border-outline-variant">
                 <a 
                   href="/resume.pdf"
                   download="Israel_Binongo_Resume.pdf"
