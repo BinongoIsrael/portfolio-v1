@@ -116,7 +116,7 @@ const Navbar = () => {
           </button>
           
           <a 
-            href="/resume.pdf" 
+            href="/Binongo - Resume.pdf" 
             download="Israel_Binongo_Resume.pdf"
             className="hidden md:flex bg-primary text-on-primary px-6 py-2 text-label-caps uppercase tracking-widest font-bold hover:opacity-90 active:scale-[0.99] transition-all items-center justify-center"
           >
@@ -184,7 +184,7 @@ const Navbar = () => {
 
               <div className="p-8 border-t border-outline-variant">
                 <a 
-                  href="/resume.pdf"
+                  href="/Binongo - Resume.pdf"
                   download="Israel_Binongo_Resume.pdf"
                   className="w-full bg-primary text-on-primary py-4 text-label-caps font-bold uppercase tracking-widest flex items-center justify-center gap-4 active:scale-[0.98] transition-all"
                 >
